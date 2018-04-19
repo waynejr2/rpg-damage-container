@@ -1,0 +1,24 @@
+{
+  "name": "rpg-damage-container",
+  "version": "1.0.0",
+  "description": "rpg combat damage contain which contains damage, bonus damage and damage bonuses and penalties",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/waynejr2/rpg-damage-container.git"
+  },
+  "keywords": [
+    "node",
+    "rpg",
+    "damage"
+  ],
+  "author": "Wayne J Rasmussen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/waynejr2/rpg-damage-container/issues"
+  },
+  "homepage": "https://github.com/waynejr2/rpg-damage-container#readme"
+}
