@@ -4,7 +4,8 @@
   "description": "rpg combat damage contain which contains damage, bonus damage and damage bonuses and penalties",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --recursive spec"
+    "test": "mocha --recursive spec",
+    "lint": "jshint index.js"
   },
   "repository": {
     "type": "git",

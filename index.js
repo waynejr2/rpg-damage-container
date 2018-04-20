@@ -52,5 +52,13 @@ module.exports = (function() {
         return result;
     };
     
+    DamageContainer.prototype.getBaseDamage = function() {
+        return this.baseDamage;
+    };
+    
+    DamageContainer.prototype.setBaseDamage = function(baseDamage) {
+        this.baseDamage = baseDamage;
+    };
+    
     return DamageContainer;
 }());

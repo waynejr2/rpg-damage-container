@@ -140,6 +140,29 @@ describe('Testing DamageContainer', function() {
         });
     });
     
+    describe('getBaseDamage', function() {
+        it('base 99, getBaseDamage equals 99', function() {
+          var dc = new DamageContainer(99);
+          
+          var actual = dc.getBaseDamage();
+          var expected = 99;
+          
+          expect(actual).to.equal(expected);          
+        });
+    });
+    
+    describe('setBaseDamage', function() {
+        it('initial base 99, setBaseDamage equals 1', function() {
+          var dc = new DamageContainer(99);
+          dc.setBaseDamage(1);
+          
+          var actual = dc.getBaseDamage();
+          var expected = 1;
+          
+          expect(actual).to.equal(expected);          
+        });
+    });
+    
     describe('scenarios', function() {
         it('base 6, addmultipliers of 2, 3, 4 to total 42', function() {
             var dc = new DamageContainer(6);
