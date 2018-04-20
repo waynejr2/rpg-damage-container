@@ -4,7 +4,7 @@
   "description": "rpg combat damage contain which contains damage, bonus damage and damage bonuses and penalties",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --recursive spec"
   },
   "repository": {
     "type": "git",
@@ -17,6 +17,10 @@
   ],
   "author": "Wayne J Rasmussen",
   "license": "MIT",
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^5.0.0"
+  },
   "bugs": {
     "url": "https://github.com/waynejr2/rpg-damage-container/issues"
   },
