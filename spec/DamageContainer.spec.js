@@ -161,6 +161,16 @@ describe('Testing DamageContainer', function() {
           
           expect(actual).to.equal(expected);          
         });
+        
+        it('use with getBaseDamage to bump initial baseDamage', function() {
+          var dc = new DamageContainer(99);
+          dc.setBaseDamage(dc.getBaseDamage() + 1);
+            
+          var actual = dc.getBaseDamage();
+          var expected = 100;
+          
+          expect(actual).to.equal(expected); 
+        });
     });
     
     describe('scenarios', function() {
