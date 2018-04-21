@@ -173,6 +173,348 @@ describe('Testing DamageContainer', function() {
         });
     });
     
+    describe('calculateBonusMultiplier2 test suite', function() {
+        it('default equals 1', function() { 
+            var dc = new DamageContainer();
+            
+            var actual = dc.calculateBonusMultiplier2();
+            var expected = 1;
+            
+            expect(actual).to.equal(expected); 
+        });
+        it('2 3 4 5 equals 14', function() { 
+            var dc = new DamageContainer();
+            
+            dc.addBonusMultiplier(2);
+            dc.addBonusMultiplier(3);
+            dc.addBonusMultiplier(4);
+            dc.addBonusMultiplier(5);
+            
+            var actual = dc.calculateBonusMultiplier2();
+            var expected = 14;
+            
+            expect(actual).to.equal(expected); 
+        });
+    });
+    
+    describe('calculateDamage2 Test suite', function() {
+        describe('addBonusDamage test suite', function() {
+            it('add 0 bonus damage', function() {
+                var dc = new DamageContainer(12);
+            
+                dc.addBonusDamage(0);
+                var actual = dc.calculateDamage2();
+                var expected = 12;
+            
+                expect(actual).to.equal(expected);     
+            });
+        
+            it('add 100 bonus damage', function() {
+                var dc = new DamageContainer(12);
+            
+                dc.addBonusDamage(50);
+                dc.addBonusDamage(50);
+                var actual = dc.calculateDamage2();
+                var expected = 112;
+            
+                expect(actual).to.equal(expected);     
+            });
+        });
+        
+        describe('scenarios', function() {
+            it('base 6, addBonusDamage 50, with 0 mutliplier results in 0 ', function() {
+                var dc = new DamageContainer(6);
+            
+                dc.addBonusMultiplier(0);
+                dc.addBonusDamage(50);
+                var actual = dc.calculateDamage2();
+                var expected = 0;
+            
+                expect(actual).to.equal(expected);     
+            });
+            
+            it('base 6, addmultipliers of 2, 3, 4 to total 54', function() {
+                var dc = new DamageContainer(6);
+            
+                dc.addBonusMultiplier(2);
+                dc.addBonusMultiplier(3);
+                dc.addBonusMultiplier(4);
+                var actual = dc.calculateDamage2();
+                var expected = 54;
+            
+                expect(actual).to.equal(expected);     
+            });
+            
+            it('base 6, addmultipliers of 2, 3, 4 and penalty to 0.5 to total 27', function() {
+                var dc = new DamageContainer(6);
+            
+                dc.addBonusMultiplier(2);
+                dc.addBonusMultiplier(3);
+                dc.addBonusMultiplier(4);
+                dc.addPenaltyMultiplier(0.5);
+                var actual = dc.calculateDamage2();
+                var expected = 27;
+            
+                expect(actual).to.equal(expected);     
+            });
+            
+            it('base 4.5, addpenaltymultipliers of .5 to total 2.25', function() {
+                var dc = new DamageContainer(4.5);
+            
+                dc.addPenaltyMultiplier(0.5);
+                var actual = dc.calculateDamage2();
+                var expected = 2.25;
+            
+                expect(actual).to.equal(expected);     
+            });
+        
+            it('base 4.5, addpenaltymultipliers of .5, .5 to total 1.125', function() {
+                var dc = new DamageContainer(4.5);
+            
+                dc.addPenaltyMultiplier(0.5);
+                dc.addPenaltyMultiplier(0.5);
+                var actual = dc.calculateDamage2();
+                var expected = 1.125;
+            
+                expect(actual).to.equal(expected);     
+            });
+        
+            it('setFalseNoBonusDamageIfBaseWithMultipliersIsZero baseDamage=10, bonusDamage=5, result should be 5', function() {
+                var dc = new DamageContainer(10);
+            
+                dc.addBonusDamage(5);
+                dc.addPenaltyMultiplier(0);
+                dc.addBonusMultiplier(2);
+                dc.setFalseNoBonusDamageIfBaseWithMultipliersIsZero();
+                var actual = dc.calculateDamage2();
+                var expected = 5;
+            
+                expect(actual).to.equal(expected);     
+            });
+        
+        
+            it('setTrueNoBonusDamageIfBaseWithMultipliersIsZero after setting to false to make sure it works', function() {
+                var dc = new DamageContainer(10);
+            
+                dc.addBonusDamage(5);
+                dc.addPenaltyMultiplier(0);
+                dc.addBonusMultiplier(2);
+                dc.setFalseNoBonusDamageIfBaseWithMultipliersIsZero();
+                var actual = dc.calculateDamage();
+                var expected = 5;
+                dc.setTrueNoBonusDamageIfBaseWithMultipliersIsZero();
+                var actual2 = dc.calculateDamage2();
+                var expected2 = 0;
+            
+                expect(actual).to.equal(expected);            
+                expect(actual2).to.equal(expected2);     
+            });
+        });
+        
+    });
+    
+    
+    describe('calculateDamage3 Test suite', function() {
+        describe('addBonusDamage test suite', function() {
+            it('add 0 bonus damage', function() {
+                var dc = new DamageContainer(12);
+            
+                dc.addBonusDamage(0);
+                var actual = dc.calculateDamage3();
+                var expected = 12;
+            
+                expect(actual).to.equal(expected);     
+            });
+        
+            it('add 100 bonus damage', function() {
+                var dc = new DamageContainer(12);
+            
+                dc.addBonusDamage(50);
+                dc.addBonusDamage(50);
+                var actual = dc.calculateDamage3();
+                var expected = 112;
+            
+                expect(actual).to.equal(expected);     
+            });
+        });
+        
+        describe('scenarios', function() {
+            it('base 6, addBonusDamage 50, with 0 mutliplier results in 0 ', function() {
+                var dc = new DamageContainer(6);
+            
+                dc.addBonusMultiplier(0);
+                dc.addBonusDamage(50);
+                var actual = dc.calculateDamage3();
+                var expected = 0;
+            
+                expect(actual).to.equal(expected);     
+            });
+            
+            it('base 6, addmultipliers of 2, 3, 4 to total 144', function() {
+                var dc = new DamageContainer(6);
+            
+                dc.addBonusMultiplier(2);
+                dc.addBonusMultiplier(3);
+                dc.addBonusMultiplier(4);
+                var actual = dc.calculateDamage3();
+                var expected = 144;
+            
+                expect(actual).to.equal(expected);     
+            });
+            
+            it('base 6, addmultipliers of 2, 3, 4 and penalty to 0.5 to total 72', function() {
+                var dc = new DamageContainer(6);
+            
+                dc.addBonusMultiplier(2);
+                dc.addBonusMultiplier(3);
+                dc.addBonusMultiplier(4);
+                dc.addPenaltyMultiplier(0.5);
+                var actual = dc.calculateDamage3();
+                var expected = 72;
+            
+                expect(actual).to.equal(expected);     
+            });
+            
+            it('base 10, addmultipliers of 10, 10, 10 to total 10000', function() {
+                var dc = new DamageContainer(10);
+            
+                dc.addBonusMultiplier(10);
+                dc.addBonusMultiplier(10);
+                dc.addBonusMultiplier(10);
+                var actual = dc.calculateDamage3();
+                var expected = 10000;
+            
+                expect(actual).to.equal(expected);     
+            });
+            it('base 10, addmultipliers of 10, 10, 10 and penalty to 0.5, 0.5 to total 2500', function() {
+                var dc = new DamageContainer(10);
+            
+                dc.addBonusMultiplier(10);
+                dc.addBonusMultiplier(10);
+                dc.addBonusMultiplier(10);
+                dc.addPenaltyMultiplier(0.5);
+                dc.addPenaltyMultiplier(0.5);
+                var actual = dc.calculateDamage3();
+                var expected = 2500;
+            
+                expect(actual).to.equal(expected);     
+            });
+            
+            it('base 4.5, addpenaltymultipliers of .5 to total 2.25', function() {
+                var dc = new DamageContainer(4.5);
+            
+                dc.addPenaltyMultiplier(0.5);
+                var actual = dc.calculateDamage3();
+                var expected = 2.25;
+            
+                expect(actual).to.equal(expected);     
+            });
+        
+            it('base 4.5, addpenaltymultipliers of .5, .5 to total 1.125', function() {
+                var dc = new DamageContainer(4.5);
+            
+                dc.addPenaltyMultiplier(0.5);
+                dc.addPenaltyMultiplier(0.5);
+                var actual = dc.calculateDamage3();
+                var expected = 1.125;
+            
+                expect(actual).to.equal(expected);     
+            });
+        
+            it('setFalseNoBonusDamageIfBaseWithMultipliersIsZero baseDamage=10, bonusDamage=5, result should be 5', function() {
+                var dc = new DamageContainer(10);
+            
+                dc.addBonusDamage(5);
+                dc.addPenaltyMultiplier(0);
+                dc.addBonusMultiplier(2);
+                dc.setFalseNoBonusDamageIfBaseWithMultipliersIsZero();
+                var actual = dc.calculateDamage3();
+                var expected = 5;
+            
+                expect(actual).to.equal(expected);     
+            });
+        
+        
+            it('setTrueNoBonusDamageIfBaseWithMultipliersIsZero after setting to false to make sure it works', function() {
+                var dc = new DamageContainer(10);
+            
+                dc.addBonusDamage(5);
+                dc.addPenaltyMultiplier(0);
+                dc.addBonusMultiplier(2);
+                dc.setFalseNoBonusDamageIfBaseWithMultipliersIsZero();
+                var actual = dc.calculateDamage();
+                var expected = 5;
+                dc.setTrueNoBonusDamageIfBaseWithMultipliersIsZero();
+                var actual2 = dc.calculateDamage3();
+                var expected2 = 0;
+            
+                expect(actual).to.equal(expected);            
+                expect(actual2).to.equal(expected2);     
+            });
+        });
+        
+    });
+    
+    describe('cd test suite, test setting of cd', function() {
+        it('base 10, addmultipliers of 10, 10, 10 to total 280', function() {
+            var dc = new DamageContainer(10);
+            
+            dc.addBonusMultiplier(10);
+            dc.addBonusMultiplier(10);
+            dc.addBonusMultiplier(10);
+            var actual = dc.cd();
+            var expected = 280;
+        
+            expect(actual).to.equal(expected);     
+        });
+        
+        it('base 10, addmultipliers of 10, 10, 10 to total 300', function() {
+            var dc = new DamageContainer(10);
+            
+            dc.addBonusMultiplier(10);
+            dc.addBonusMultiplier(10);
+            dc.addBonusMultiplier(10);
+            dc.setDefaultCalcToCalculateDamage2();
+            var actual = dc.cd();
+            var expected = 300;
+        
+            expect(actual).to.equal(expected);     
+        });
+        
+        it('base 10, addmultipliers of 10, 10, 10 to total 10000', function() {
+            var dc = new DamageContainer(10);
+            
+            dc.addBonusMultiplier(10);
+            dc.addBonusMultiplier(10);
+            dc.addBonusMultiplier(10);
+            dc.setDefaultCalcToCalculateDamage3();
+            var actual = dc.cd();
+            var expected = 10000;
+        
+            expect(actual).to.equal(expected);     
+        });
+        
+        
+        it('base 10, addmultipliers of 10, 10, 10 to total 280 set then set again.', function() {
+            var dc = new DamageContainer(10);
+            
+            dc.addBonusMultiplier(10);
+            dc.addBonusMultiplier(10);
+            dc.addBonusMultiplier(10);
+            dc.setDefaultCalcToCalculateDamage3();
+            var actual = dc.cd();
+            var expected = 10000;
+        
+            expect(actual).to.equal(expected);
+            
+            dc.setDefaultCalcToCalculateDamage();
+            var actual = dc.cd();
+            var expected = 280;
+        
+            expect(actual).to.equal(expected);      
+        });
+    });
+    
     describe('scenarios', function() {
         it('base 6, addmultipliers of 2, 3, 4 to total 42', function() {
             var dc = new DamageContainer(6);
@@ -205,6 +547,49 @@ describe('Testing DamageContainer', function() {
             var expected = 1.125;
             
             expect(actual).to.equal(expected);     
+        });
+        
+        it('baseDamage = 10 + bonusDamage = 5, mutiplier is 0 so result should be 0', function() {
+            var dc = new DamageContainer(10);
+            
+            dc.addBonusDamage(5);
+            dc.addPenaltyMultiplier(0);
+            dc.addBonusMultiplier(2);
+            var actual = dc.calculateDamage();
+            var expected = 0;
+            
+            expect(actual).to.equal(expected);     
+        });
+        
+        it('setFalseNoBonusDamageIfBaseWithMultipliersIsZero baseDamage=10, bonusDamage=5, result should be 5', function() {
+            var dc = new DamageContainer(10);
+            
+            dc.addBonusDamage(5);
+            dc.addPenaltyMultiplier(0);
+            dc.addBonusMultiplier(2);
+            dc.setFalseNoBonusDamageIfBaseWithMultipliersIsZero();
+            var actual = dc.calculateDamage();
+            var expected = 5;
+            
+            expect(actual).to.equal(expected);     
+        });
+        
+        
+        it('setTrueNoBonusDamageIfBaseWithMultipliersIsZero after setting to false to make sure it works', function() {
+            var dc = new DamageContainer(10);
+            
+            dc.addBonusDamage(5);
+            dc.addPenaltyMultiplier(0);
+            dc.addBonusMultiplier(2);
+            dc.setFalseNoBonusDamageIfBaseWithMultipliersIsZero();
+            var actual = dc.calculateDamage();
+            var expected = 5;
+            dc.setTrueNoBonusDamageIfBaseWithMultipliersIsZero();
+            var actual2 = dc.calculateDamage();
+            var expected2 = 0;
+            
+            expect(actual).to.equal(expected);            
+            expect(actual2).to.equal(expected2);     
         });
     });
     
