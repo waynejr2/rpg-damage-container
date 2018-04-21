@@ -23,3 +23,18 @@ var DamageContainer = require('rpg-damage-container');
   dc.getBaseDamage();                       //would return 12.
   dc.setBaseDamage(dc.getBaseDamage + 10);  //add 10 to the current base damage value
 ```
+
+NOTE:  when damage calculations are made, base damage can be multiplied by damage multiplier (ex:  double/triple damage).  It might not be desirable to add to the base
+damage like shown above as it would get doubled/tripled as well and may be over powered.  We have a soluation to that, which is bonusDamage. BonusDamage is added after
+the multiplication.
+
+addBonusDamage
+
+```javascript
+var DamageContainer = require('rpg-damage-container');
+
+  var dc = new DamageContainer();           //without passing an argument it will initialized with base damage of 0
+  dc.setBaseDamage(12);                     //sets the base damage to 12.
+  dc.getBaseDamage();                       //would return 12.
+  dc.addBonusDamage(10);                    //add 10 to the current BonusDamage
+```
