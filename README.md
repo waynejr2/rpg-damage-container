@@ -62,3 +62,19 @@ var DamageContainer = require('rpg-damage-container');
   additive = dc.calculateDamage2()          //returns damage value of 90
   multiplicative = dc.calculateDamage3()    //returns damage value of 240  
 ```
+
+There can also be penalty multipliers.  For example, half damage from fire is 0.5 as a multiplier and gets added using the addPenaltyMultiplier method.
+
+addPenaltyMultiplier
+
+```javascript
+var DamageContainer = require('rpg-damage-container');
+
+  var dc = new DamageContainer();           //without passing an argument it will initialized with base damage of 0
+  dc.setBaseDamage(10);                     //sets the base damage to 10.
+  dc.addBonusMultiplier(4);                 //something has 4 times damage
+  dc.addPenaltyMultiplier(0.5)              //a penalty do damage of 1/2 or 0.5 as a multiplier
+  normal = dc.calculateDamage()             //returns damage value of 20
+```
+
+WARNING:  Penalties are not to be mixed up with bonuses.  They are calulated differently.  You have been warned.
