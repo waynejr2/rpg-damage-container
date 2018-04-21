@@ -7,5 +7,8 @@ After passing around is completed, you can calculate the final damage.   This do
 ## Usage
 
 ```javascript
-var dc = require('rpg-damage-container');
+var DamageContainer = require('rpg-damage-container');
+
+var dc1 = new DamageContainer();   //initialized without passing a base damage amount
+var dc2 = new DamageContainer(12);  //initialized with passing a base damage of 12
 ```
