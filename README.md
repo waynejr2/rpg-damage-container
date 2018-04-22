@@ -91,14 +91,14 @@ var DamageContainer = require('rpg-damage-container');
   var dc = new DamageContainer();           //without passing an argument it will initialized with base damage of 0
   dc.addBonusMultiplier(4);                 //something has 4 times damage
   dc.addPenaltyMultiplier(0.5)              //a penalty to damage of 1/2 or 0.5 as a multiplier
-  dc.addBonusDamage(50);                    //add 10 to the current BonusDamage
+  dc.addBonusDamage(50);                    //add 50 to the current BonusDamage
   normal = dc.calculateDamage()             //returns damage value of 0
   
   
   var dc2 = new DamageContainer();          //without passing an argument it will initialized with base damage of 0
   dc2.addBonusMultiplier(4);                //something has 4 times damage
   dc2.addPenaltyMultiplier(0.5)             //a penalty to damage of 1/2 or 0.5 as a multiplier
-  dc2.addBonusDamage(10);                   //add 10 to the current BonusDamage
+  dc2.addBonusDamage(50);                   //add 50 to the current BonusDamage
   dc2.setTrueNoBonusDamageIfBaseWithMultipliersIsZero();
   normal2 = dc2.calculateDamage()           //returns damage value of 50
   
