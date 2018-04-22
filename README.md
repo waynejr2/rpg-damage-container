@@ -103,8 +103,10 @@ var DamageContainer = require('rpg-damage-container');
   normal2 = dc2.calculateDamage()           //returns damage value of 50  
 ```
 
-There another calculation method called cd.  The default calculation assigned to cd is calculateDamage.  It can be set to any of the three using the methods:
+There another calculation method called cd.  The default calculation assigned to cd is calculateDamage. It can be set to any of the three using the methods:
 
+
+    value = dc.cd();
     setDefaultCalcToCalculateDamage 
     setDefaultCalcToCalculateDamage2
     setDefaultCalcToCalculateDamage3 
