@@ -1,6 +1,6 @@
 {
   "name": "rpg-damage-container",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "rpg combat damage contain which contains damage, bonus damage and damage bonuses and penalties",
   "main": "index.js",
   "scripts": {
