@@ -99,7 +99,7 @@ var DamageContainer = require('rpg-damage-container');
   dc2.addBonusMultiplier(4);                //something has 4 times damage
   dc2.addPenaltyMultiplier(0.5)             //a penalty to damage of 1/2 or 0.5 as a multiplier
   dc2.addBonusDamage(50);                   //add 50 to the current BonusDamage
-  dc2.setTrueNoBonusDamageIfBaseWithMultipliersIsZero();
+  dc2.setFalseNoBonusDamageIfBaseWithMultipliersIsZero();
   normal2 = dc2.calculateDamage()           //returns damage value of 50  
 ```
 
